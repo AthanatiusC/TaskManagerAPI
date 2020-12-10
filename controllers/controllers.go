@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/AthanatiusC/FaceRecogApiV2/models"
+	"github.com/AthanatiusC/TaskManager/models"
 )
 
 func respondJSON(w http.ResponseWriter, status int, message string, data interface{}) {
@@ -17,9 +17,9 @@ func respondJSON(w http.ResponseWriter, status int, message string, data interfa
 	payload.Message = message
 	payload.Data = data
 
-	w.Header().Set("Content-Type", "application/json")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+	w.Header().Set("Access-Control-Allow-Headers", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "*")
 	w.WriteHeader(status)
 	json.NewEncoder(w).Encode(payload)
 }
